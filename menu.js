@@ -640,7 +640,8 @@ var RevealMenu = window.RevealMenu || (function(){
 										}
 									});
 								} else {
-									var item = generateItem('slide-menu-item', section, slideCount, h);
+									var isChapter = section.classList.contains('chapter');
+									var item = generateItem(isChapter?'slide-menu-item':'slide-menu-item-vertical', section, slideCount, h);
 									if (item) {
 										slideCount++;
 										items.appendChild(item);
