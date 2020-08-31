@@ -832,20 +832,22 @@ const Plugin = () => {
           );
           var slideCount = 0;
           selectAll('.slides > section').forEach(function (section, h) {
-            var subsections = selectAll('section', section);
-            if (subsections.length > 0) {
-              subsections.forEach(function (subsection, v) {
-                var type =
-                  v === 0 ? 'slide-menu-item' : 'slide-menu-item-vertical';
-                var item = generateItem(type, subsection, slideCount, h, v);
-                if (item) {
-                  items.appendChild(item);
-                }
-                slideCount++;
-              });
-            } else {
+            // var subsections = selectAll('section', section);
+            // if (subsections.length > 0) {
+            //   subsections.forEach(function (subsection, v) {
+            //     var type =
+            //       v === 0 ? 'slide-menu-item' : 'slide-menu-item-vertical';
+            //     var item = generateItem(type, subsection, slideCount, h, v);
+            //     var item = generateItem(type, section, slideCount, h, v);
+            //     if (item) {
+            //       items.appendChild(item);
+            //     }
+            //     slideCount++;
+            //   });
+            // } else {
+              var isChapter = section.classList.contains('chapter');
               var item = generateItem(
-                'slide-menu-item',
+                isChapter ? 'slide-menu-item' : 'slide-menu-item-vertical',
                 section,
                 slideCount,
                 h
@@ -854,7 +856,7 @@ const Plugin = () => {
                 items.appendChild(item);
               }
               slideCount++;
-            }
+            // }
           });
           selectAll('.slide-menu-item, .slide-menu-item-vertical').forEach(
             function (i) {
